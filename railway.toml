@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "python3 agent.py --schedule"
+restartPolicyType = "always"

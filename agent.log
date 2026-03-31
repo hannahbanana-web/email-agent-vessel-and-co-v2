@@ -1,0 +1,59 @@
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/anthropic/_compat.py:48: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.typing import (
+Starting scheduled mode — scanning every 60 minutes
+Press Ctrl+C to stop.
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ 🚀 Vessel & Co Gmail Agent — Starting scan                                   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+  Connecting to Gmail API...
+  Connecting to Claude API...
+  Checking labels...
+  Fetching emails...
+  Found 50 new emails (50 total fetched)
+  Classifying 50 emails with Claude...
+Traceback (most recent call last):
+  File "/Users/hannahpatten/Desktop/vessel-gmail-agent/agent.py", line 274, in <module>
+    run_scheduled()
+    ~~~~~~~~~~~~~^^
+  File "/Users/hannahpatten/Desktop/vessel-gmail-agent/agent.py", line 253, in run_scheduled
+    run_scan()
+    ~~~~~~~~^^
+  File "/Users/hannahpatten/Desktop/vessel-gmail-agent/agent.py", line 165, in run_scan
+    classifications = classify_batch(claude, new_emails)
+  File "/Users/hannahpatten/Desktop/vessel-gmail-agent/classifier.py", line 106, in classify_batch
+    result = classify_email(client, email)
+  File "/Users/hannahpatten/Desktop/vessel-gmail-agent/classifier.py", line 71, in classify_email
+    response = client.messages.create(
+        model="claude-sonnet-4-5-20250514",
+    ...<7 lines>...
+        ],
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/anthropic/_utils/_utils.py", line 275, in wrapper
+    return func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/anthropic/resources/messages.py", line 888, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<22 lines>...
+        stream_cls=Stream[RawMessageStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/anthropic/_base_client.py", line 1279, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/anthropic/_base_client.py", line 956, in request
+    return self._request(
+           ~~~~~~~~~~~~~^
+        cast_to=cast_to,
+        ^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        retries_taken=retries_taken,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/anthropic/_base_client.py", line 1060, in _request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.AuthenticationError: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CZbnXEQQmpy7QxWZyEvkD'}

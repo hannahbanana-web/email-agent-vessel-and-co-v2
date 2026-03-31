@@ -1,0 +1,7 @@
+.env
+token.json
+credentials.json
+agent_state.json
+digests/
+__pycache__/
+*.pyc
