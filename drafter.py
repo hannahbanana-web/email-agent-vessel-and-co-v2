@@ -57,7 +57,7 @@ If you don't have enough information to give a complete answer (rates, availabil
 """
 
     response = client.messages.create(
-        model="claude-sonnet-4-5-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=800,
         system=DRAFT_SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_prompt}],
